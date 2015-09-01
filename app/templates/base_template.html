@@ -1,0 +1,121 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adressa</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- Latest compiled and minified CSS -->
+
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="header" class="site-header">
+        <nav id="topbar" class="site-topbar visible-lg visible-md">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">Fragen? Ruf uns an: +49 30 25 740 160</div>
+              <div class="social-links col-sm-6">
+
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav id="navbar" class="site-navbar navbar navbar-static-top one-page-nav" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+              </button>
+              <h1 class="navbar-brand"><a href="{% url 'home' %}"><img style="width:40px; height:30px; margin-right:10px; margin-top:-5px" src="{% static "img/address.jpg" %}" alt="First slide">ADDRESSA</a></h1>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul id="navigation" class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#header" class="current">Demo</a></li>
+                <li><a href="#features">Produkte</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#data">Länder & Daten</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+              </ul>
+            <ul class="nav navbar-nav">
+                      {% if user.is_authenticated %}
+                          <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
+
+                  </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main" class="site-main">
+          <div class="container" style="background: url({% static "img/bg-2.jpg" %}); width:100%; min-height:540px">
+          <div style="margin-top: 50px;" class="container">
+        {% block content %}
+        {% endblock %}
+          </div>
+          </div>
+      </main>
+
+      <footer id="footer" class="site-footer">
+        <div class="container">
+
+          <div id="sidebar-footer-1">
+            <div class="row">
+
+              <aside class="widget col-md-6 col-sm-6">
+                <h5 class="widget-title">Über Uns</h5>
+                <p>Wir haben selbst lange einen Online Shop betrieben und wissen über die Probleme und Nachteile des eCommerce gut bescheid. Oft haben wir uns über die zahlreichen Retouren und der hohen Abbruchquote bei Bestellforumlaren geärgert. Daher fingen wir an an einer Lösung zu arbeiten und schnell kamen zahlreiche Anfragen und Interessierte auf uns zu. Nun wollen wir unser oft optimiertes Tool endgültig allen Akteuren des eCommerces' anbieten. </a></p>
+              </aside>
+
+              <aside class="widget col-md-6 col-sm-6">
+                <h5 class="widget-title">Kontakt</h5>
+                <div class="textwidget">
+                  <div class="adr">
+                    Hergenröder Labor
+                    <div class="street-address">Am Studio 2a</div>
+                    <span class="postal-code">12489</span>,
+                    <span class="city">Berlin</span>,
+                    <span class="country-name">Deutschland</span>
+                  </div>
+                  <div>Telefon: <span class="tel">+49 30 25 740 160</span></div>
+                  <a href="mailto:eduard.hergenroeder@hergenroeder-labor.de">eduard.hergenroeder@hergenroeder-labor.de</a>
+                </div>
+              </aside>
+
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </footer>
+
+
+    <div class="scroll-to-top" data-spy="affix" data-offset-top="200"><a href="#page" class="smooth-scroll"><i class="fa fa-arrow-up"></i></a></div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static "js/bootstrap-3.1.1.min.js" %}"></script>
+    <script src="{% static "js/jquery.isotope.min.js?v=1.5.26" %}"></script>
+    <script src="{% static "js/jquery.isotope.min.js?v=1.5.26" %}"></script>
+    <script src="{% static "js/jquery.singlePageNav.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+
+
+  </body>
+</html>

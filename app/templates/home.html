@@ -1,0 +1,421 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adressa</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- Latest compiled and minified CSS -->
+
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="header" class="site-header">
+        <nav id="topbar" class="site-topbar visible-lg visible-md">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">Fragen? Ruf uns an: +49 30 25 740 160</div>
+              <div class="social-links col-sm-6">
+
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <nav id="navbar" class="site-navbar navbar navbar-static-top one-page-nav" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+              </button>
+              <h1 class="navbar-brand"><a href="{% url 'home' %}"><img style="width:40px; height:30px; margin-right:10px; margin-top:-5px" src="{% static "img/address.jpg" %}" alt="First slide">ADDRESSA</a></h1>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul id="navigation" class="nav navbar-nav navbar-right">
+
+                <li class="active"><a href="#header" class="current">Demo</a></li>
+                <li><a href="#features">Produkte</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#data">Länder & Daten</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+
+              </ul>
+                <ul class="nav navbar-nav">
+                      {% if user.is_authenticated %}
+                          <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
+
+                  </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main" class="site-main">
+
+        <section id="carousel-1" class="carousel slide section-slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="item active" style="background: url({% static "img/bg-2.jpg" %});">
+              <div class="container" id="democontainer" style="width:100%; height:540px ">
+                <center>
+                  <div style="margin-top:80px;">
+                  <h2>Probier es aus!</h2>
+                <form style="margin-top:50px;" class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only" for="street">Straße</label>
+                    <input type="text" class="form-control" id="street" placeholder="Straße">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="zip">PLZ</label>
+                    <input type="text" class="form-control" id="zip" placeholder="PLZ">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="city">Stadt</label>
+                    <input type="text" class="form-control" id="city" placeholder="Stadt">
+                  </div>
+                </form>
+                </div>
+              </center>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="section section-center section-hilite section-features">
+          <div class="container">
+            <h2 class="section-title"><span>Unsere Produkte</span></h2>
+            <div class="row">
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/validation.png" %}"  alt="validation"></div>
+                <h4>Adressvalidierung</h4>
+                <p>Sparen Sie sich unnötige Kosten für nachträgliche Korrekturen oder Retouren!</p>
+              </div>
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/complete.png" %}"  alt="validation"></div>
+                <h4>Adress Autocomplete</h4>
+                <p>Erhöhen Sie Conversionrate und das allgemeine Kundenerlebnis!</p>
+              </div>
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/extract.png" %}"  alt="extract"></div>
+                <h4>Adress Extrahierung</h4>
+                <p>Filtern und speichern Sie Adressdaten aus Textdokumenten/Tabellen etc.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="section section-center section-pricing">
+            <div class="container">
+                <h2 class="section-title"><span>Preise</span></h2>
+                <div class="pricing-table">
+                    <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>500</h1>
+                                    <div class="the-price">20 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>500 Lookups</td></tr>
+                                            <tr><td>4 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>1 000</h1>
+                                    <div class="the-price">30 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>1 000 Lookups</td></tr>
+                                            <tr><td>3 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>5 000</h1>
+                                    <div class="the-price">50 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>5 000 Lookups</td></tr>
+                                            <tr><td>1 Cent / Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>10 000</h1>
+                                    <div class="the-price">80 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>10 000 Lookups</td></tr>
+                                            <tr><td>0,8 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-primary">
+                                <header class="panel-heading">
+                                    <h1>25 000</h1>
+                                    <div class="the-price">150 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>25 000 Lookups</td></tr>
+                                            <tr><td>0,6 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>50 000</h1>
+                                    <div class="the-price">280 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>50 000 Lookups</td></tr>
+                                            <tr><td>0,56 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>100 000</h1>
+                                    <div class="the-price">450 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>100 000 Lookups</td></tr>
+                                            <tr><td>0,45 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h1>unlimited</h1>
+                                    <div class="the-price">900 € <span class="subscript">/ Monat</span></div>
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><td>unlimited Lookups</td></tr>
+                                            <tr><td> < 0,45 Cent/ Lookup</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer"><a href="#contact" class="btn btn-block btn-default">Jetzt bestellen!</a></footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="section section-center section-hilite section-team">
+            <div class="container">
+                <h2 class="section-title"><span>Länder & Daten </span></h2>
+                <p>Unsere Daten beziehen wir von den nationalen Postunternehmen. Aktuell bieten wir unsere Produkte für die DACH Region an (Deutschland, Österreich und Schweiz).</p>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7;" src="{% static "img/post-germany.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/dl.png" %}">
+                    </div>
+
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/post-switzerland.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/swiss.png" %}">
+                    </div>
+
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/post-austria.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/austria.png" %}">
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+         <section id="testimonials" class="section section-center  section-testimonial">
+          <div class="container">
+            <h2 class="section-title"><span>Warum unsere Lösungen so wichtig sind</span></h2>
+
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <blockquote>
+                    <p>Adresskorrektur oder Adressprüfung ist ein automatisierter Prozess, bei dem die Qualität und Zustellbarkeit postalischer Adressen geprüft und verbessert werden. </p>
+                    <p>Unsere Adressdaten sind die zuverlässigsten, sie werden mehrmals im Jahr aktualisiert.</p>
+                    <p>Falsche Zustellungen durch fehlerhafte Adressen gehören ab jetzt der Vergangenheit an. Damit sparen Sie bares Geld und wertvolle Arbeitskraft.</p>
+                  </blockquote>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <p>Unsere Datenstruktur wurde so entworfen, dass  ein Lookup in einem bruchteil einer Sekunde durchgeführt werden kann. </p>
+                    <p>Erleichtern Sie ihren Kunden durch Autocomplete das Ausfüllen von Bestellformularen. Dadurch erhöhen Sie ihre Conversion Rate nachweislich und ihre Kunden fühlen sich durch die Validierung sicherer!</p>
+                  </blockquote>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <p>Unser Extrahierungstool gewinnt Adressen aus unstrukturierten Formaten wie E-Mails, Texte, Tweets, Webpages etc. Sparen Sie sich wertvolle Zeit und extrahieren und validieren Sie Adressen im Handumdrehen!</p>
+                  </blockquote>
+                </div>
+              </div>
+
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><img src="{% static "img/validation.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"><img src="{% static "img/complete.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"><img src="{% static "img/extract.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+              </ol>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="contact" class="section section-center section-hilite section-contact">
+          <div class="container">
+            <h2 class="section-title"><span>Worauf warten Sie noch? </span></h2>
+            <p>Geben Sie uns ihre EMail Adresse und erhalten Sie die ersten 250 Lookups gratis! Wir werden innerhalb der nächsten 24h Kontakt zu ihnen aufnehmen. Sollte ihnen das zu lange dauern, rufen Sie uns einfach an: +49 30 25 740 160</p>
+            <div class="main-action">
+              <form method="post" action="." name="contactform" id="contactform">
+                <div class="results"></div>
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 col-xs-0"> </div>
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                      <label class="sr-only">Email</label>
+                      <input name="email" type="email" class="form-control" placeholder="Email" required>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-0">
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                          <button id="submit" type="submit" class="btn btn-default btn-block">Send</button>
+                        </div>
+
+                  </div>
+
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer id="footer" class="site-footer">
+        <div class="container">
+
+          <div id="sidebar-footer-1">
+            <div class="row">
+
+              <aside class="widget col-md-6 col-sm-6">
+                <h5 class="widget-title">Über Uns</h5>
+                <p>Wir haben selbst lange einen Online Shop betrieben und wissen über die Probleme und Nachteile des eCommerce gut bescheid. Oft haben wir uns über die zahlreichen Retouren und der hohen Abbruchquote bei Bestellforumlaren geärgert. Daher fingen wir an an einer Lösung zu arbeiten und schnell kamen zahlreiche Anfragen und Interessierte auf uns zu. Nun wollen wir unser oft optimiertes Tool endgültig allen Akteuren des eCommerces' anbieten. </a></p>
+              </aside>
+
+              <aside class="widget col-md-6 col-sm-6">
+                <h5 class="widget-title">Kontakt</h5>
+                <div class="textwidget">
+                  <div class="adr">
+                    Hergenröder Labor
+                    <div class="street-address">Am Studio 2a</div>
+                    <span class="postal-code">12489</span>,
+                    <span class="city">Berlin</span>,
+                    <span class="country-name">Deutschland</span>
+                  </div>
+                  <div>Telefon: <span class="tel">+49 30 25 740 160</span></div>
+                  <a href="mailto:eduard.hergenroeder@hergenroeder-labor.de">eduard.hergenroeder@hergenroeder-labor.de</a>
+                </div>
+              </aside>
+
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </footer>
+
+
+    <div class="scroll-to-top" data-spy="affix" data-offset-top="200"><a href="#page" class="smooth-scroll"><i class="fa fa-arrow-up"></i></a></div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static "js/bootstrap-3.1.1.min.js" %}"></script>
+    <script src="{% static "js/jquery.isotope.min.js?v=1.5.26" %}"></script>
+    <script src="{% static "js/jquery.isotope.min.js?v=1.5.26" %}"></script>
+    <script src="{% static "js/jquery.singlePageNav.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+
+</div>
+  </body>
+</html>

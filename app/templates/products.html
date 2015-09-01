@@ -1,0 +1,66 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block content %}
+ <section id="features" class="section section-center section-hilite section-features">
+          <div class="container">
+            <h2 class="section-title"><span>Unsere Produkte</span></h2>
+            <div class="row">
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/validation.png" %}"  alt="validation"></div>
+                <h4>Adressvalidierung</h4>
+                <p>Sparen Sie sich unnötige Kosten für nachträgliche Korrekturen oder Retouren!</p>
+              </div>
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/complete.png" %}"  alt="validation"></div>
+                <h4>Adress Autocomplete</h4>
+                <p>Erhöhen Sie Conversionrate und das allgemeine Kundenerlebnis!</p>
+              </div>
+
+              <div class="col-md-4 col-sm-6">
+                <div class="icon-wrap"><img style="height:128px; width:128px;" src="{% static "img/extract.png" %}"  alt="extract"></div>
+                <h4>Adress Extrahierung</h4>
+                <p>Filtern und speichern Sie Adressdaten aus Textdokumenten/Tabellen etc.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+     <section id="testimonials" class="section section-center  section-testimonial">
+          <div class="container">
+            <h2 class="section-title"><span>Warum unsere Lösungen so wichtig sind</span></h2>
+
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <blockquote>
+                    <p>Adresskorrektur oder Adressprüfung ist ein automatisierter Prozess, bei dem die Qualität und Zustellbarkeit postalischer Adressen geprüft und verbessert werden. </p>
+                    <p>Unsere Adressdaten sind die zuverlässigsten, sie werden mehrmals im Jahr aktualisiert.</p>
+                    <p>Falsche Zustellungen durch fehlerhafte Adressen gehören ab jetzt der Vergangenheit an. Damit sparen Sie bares Geld und wertvolle Arbeitskraft.</p>
+                  </blockquote>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <p>Unsere Datenstruktur wurde so entworfen, dass  ein Lookup in einem bruchteil einer Sekunde durchgeführt werden kann. </p>
+                    <p>Erleichtern Sie ihren Kunden durch Autocomplete das Ausfüllen von Bestellformularen. Dadurch erhöhen Sie ihre Conversion Rate nachweislich und ihre Kunden fühlen sich durch die Validierung sicherer!</p>
+                  </blockquote>
+                </div>
+                <div class="item">
+                  <blockquote>
+                    <p>Unser Extrahierungstool gewinnt Adressen aus unstrukturierten Formaten wie E-Mails, Texte, Tweets, Webpages etc. Sparen Sie sich wertvolle Zeit und extrahieren und validieren Sie Adressen im Handumdrehen!</p>
+                  </blockquote>
+                </div>
+              </div>
+
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><img src="{% static "img/validation.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"><img src="{% static "img/complete.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"><img src="{% static "img/extract.png" %}" width="64" height="64" alt="" class="img-circle"></li>
+              </ol>
+            </div>
+
+          </div>
+        </section>
+{% endblock %}

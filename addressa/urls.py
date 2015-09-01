@@ -17,6 +17,13 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^accounts/profile/$', 'app.views.profile', name='profile'),
     url(r'^profile/$', 'app.views.profile', name='profile'),
+
+    #OTHER SIDES url(r'^register/$', 'app.views.register', name='register'),
+    url(r'^demo/', ('app.views.demo'), name='demo'),
+    url(r'^preise/', ('app.views.preise'), name='preise'),
+    url(r'^produkte', ('app.views.produkte'), name='produkte'),
+    url(r'^daten/', ('app.views.daten'), name='daten'),
+    url(r'^kontakt/', ('app.views.kontakt'), name='kontakt'),
 ]
 
 if settings.DEBUG:

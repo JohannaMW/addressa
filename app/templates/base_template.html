@@ -41,22 +41,21 @@
               <h1 class="navbar-brand"><a href="{% url 'home' %}"><img style="width:40px; height:30px; margin-right:10px; margin-top:-5px" src="{% static "img/address.jpg" %}" alt="First slide">ADDRESSA</a></h1>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
-              <ul id="navigation" class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#header" class="current">Demo</a></li>
-                <li><a href="#features">Produkte</a></li>
-                <li><a href="#pricing">Preise</a></li>
-                <li><a href="#data">Länder & Daten</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="{% url 'demo' %}" class="current">Demo</a></li>
+                <li><a href="{% url 'produkte' %}">Produkte</a></li>
+                <li><a href="{% url 'preise' %}">Preise</a></li>
+                <li><a href="{% url 'daten' %}">Länder & Daten</a></li>
+                <li><a href="{% url 'kontakt' %}">Kontakt</a></li>
               </ul>
-            <ul class="nav navbar-nav">
-                      {% if user.is_authenticated %}
-                          <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                        {% else %}
-                        <li><a href="{% url 'login' %}">Login</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                        {% endif %}
-
+                <ul class="nav navbar-nav">
+                  {% if user.is_authenticated %}
+                      <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                      <li><a href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                      <li><a href="{% url 'login' %}">Login</a></li>
+                      <li><a href="{% url 'register' %}">Register</a></li>
+                  {% endif %}
                   </ul>
             </div>
           </div>
@@ -64,12 +63,12 @@
       </header>
 
       <main id="main" class="site-main">
-          <div class="container" style="background: url({% static "img/bg-2.jpg" %}); width:100%; min-height:540px">
-          <div style="margin-top: 50px;" class="container">
+          <div class="container" style=" width:100%">
+
         {% block content %}
         {% endblock %}
           </div>
-          </div>
+
       </main>
 
       <footer id="footer" class="site-footer">

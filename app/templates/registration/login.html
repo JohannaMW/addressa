@@ -2,13 +2,26 @@
 {% load bootstrap %}
 
 {% block content %}
+<section class="section section-center section-hilite section-team" style="text-align: left">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-2 col-xs-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-8 col-xs-10">
+        <h2 class="section-title"><span>Login </span></h2>
     <form method="post" action=".">
         {% csrf_token %}
         {{ form|bootstrap }}
 <button type="submit" value="Log in" class="btn btn-primary" aria-label="Left Align">
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Login
 </button>
+        </form>
+        <br>
 
 
-    <p>Not member? <a href="{% url 'register' %}">Register!</a></p>
+    <p>Noch nicht <a href="{% url 'register' %}">registriert?</a></p>
+                </div>
+            <div class="col-lg-4 col-md-4 col-sm-2 col-xs-1"></div>
+            </div>
+    </div>
+</section>
 {% endblock %}

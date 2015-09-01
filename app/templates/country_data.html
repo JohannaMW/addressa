@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+{% load static %}
+{% block content %}
+<section id="data" class="section section-center section-hilite section-team">
+            <div class="container">
+                <h2 class="section-title"><span>Länder & Daten </span></h2>
+                <p>Unsere Daten beziehen wir von den nationalen Postunternehmen. Aktuell bieten wir unsere Produkte für die DACH Region an (Deutschland, Österreich und Schweiz).</p>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7;" src="{% static "img/post-germany.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/dl.png" %}">
+                    </div>
+
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/post-switzerland.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/swiss.png" %}">
+                    </div>
+
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/post-austria.png" %}">
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <img style="width:130px; height: 130px; opacity: 0.7" src="{% static "img/austria.png" %}">
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+{% endblock %}

@@ -14,6 +14,21 @@ from django.utils import timezone
 def home(request):
     return render(request, 'home.html')
 
+def produkte(request):
+    return render(request, 'products.html')
+
+def daten(request):
+    return render(request, 'country_data.html')
+
+def preise(request):
+    return render(request, 'prices.html')
+
+def kontakt(request):
+    return render(request, 'contact.html')
+
+def demo(request):
+    return render(request, 'demo.html')
+
 def profile(request):
     return render(request, 'profile.html')
 

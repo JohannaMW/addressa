@@ -85,7 +85,7 @@ def register(request):
             email_subject = 'Ihre Registrierung bei ADDRESSA!'
             email_body = "Hallo %s! Nur noch ein Schritt bis zur Erstellung Deines Accounts! Bitte klicke den folgenden Link innerhalb" \
                          " der naechsten 48h um die Registrierung abzuschliessen!" \
-                         " http://127.0.0.1:8000/register/confirm/%s" % (username, activation_key)
+                         " http://78.46.57.90/register/confirm/%s" % (username, activation_key)
 
             send_mail(email_subject, email_body, 'johanna.weinsziehr@gmail.com',
                 [email], fail_silently=False)

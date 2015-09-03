@@ -1,7 +1,13 @@
 {% extends "base_template.html" %}
 
 {% block content %}
-    <p>Leider ist ihr Aktivierungskey bereits abgelaufen!</p>
+    <section class="section section-center section-hilite section-team" style="text-align: left">
+    <div class="container">
+        <div class="row">
+               <h2 class="section-title"><span>Leider ist ihr Aktivierungskey bereits abgelaufen!</span></h2>
     <p>Kein Problem, generieren Sie sich einfach einen neuen:</p>
-    <a href="{% url 'register' %}"><button type="button" class="btn btn-default">Register</button></a>
+            <a href="{% url 'register' %}"><button type="button" class="btn btn-default">Register</button></a>
+            </div>
+    </div>
+</section>
 {% endblock %}

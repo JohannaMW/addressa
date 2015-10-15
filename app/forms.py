@@ -1,6 +1,13 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from app.models import Client
+from app.models import Client, AccountContact
+
+
+class AccountContactForm(ModelForm):
+    class Meta:
+        model = AccountContact
+        fields = ("first_name", "last_name", "email", "company", "phone")
 
 
 class ClientRegistrationForm(UserCreationForm):
@@ -8,6 +15,12 @@ class ClientRegistrationForm(UserCreationForm):
     class Meta:
         model = Client
         fields = ("username", "email", "password1", "password2")
+
+class UpdateProfile(UserCreationForm):
+    email = forms.EmailField(required=True)
+    class Meta:
+        model = Client
+        fields = ("username", "first_name", "last_name", "email", "website", "company", "password1", "password2")
 
 #clean email field
 def clean_email(self):

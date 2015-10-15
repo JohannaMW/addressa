@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
@@ -30,7 +31,35 @@ def demo(request):
     return render(request, 'demo.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    subscriptions = Subscription.objects.filter(owner=request.user)
+    active_subscription = Subscription.objects.filter(owner=request.user, status=2)
+    inactive_subscriptions = Subscription.objects.filter(owner=request.user, status=1)
+    account_contact = AccountContact.objects.filter(account_holder=request.user)
+    secret_key = SecretKey.objects.filter(owner=request.user)
+    website_key = WebsiteKey.objects.filter(owner=request.user)
+    return render(request, 'profile.html', {
+        subscriptions : 'subscriptions',
+        account_contact: 'account_contact',
+        active_subscription: 'active_subscription',
+        inactive_subscriptions: 'inactive_subscriptions',
+        secret_key: 'secret_key',
+        website_key: 'website_key'
+    })
+
+def update(request, template_name="update.html"):
+    if request.method == 'POST':
+        form = UpdateProfile(data=request.POST, instance=request.user)
+        print(request.user)
+        print "blaaa"
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.instance)
+            return redirect("update")
+    else:
+        form = UpdateProfile(instance=request.user)
+    # page_title = _('Edit user names')
+    return render_to_response(template_name, locals(),
+        context_instance=RequestContext(request))
 
 def register_confirmation(request):
     return render(request, 'registration/confirm.html')
@@ -57,6 +86,28 @@ def register_confirm(request, activation_key):
     user_profile.is_active = True
     user_profile.save()
     return redirect("/register_success/")
+
+def add_contact(request):
+    contacts = AccountContact.objects.filter(account_holder=request.user)
+    if request.method == 'POST':
+        form = AccountContactForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            company = form.cleaned_data['company']
+            phone = form.cleaned_data['phone']
+            user = request.user
+            AccountContact.objects.create(first_name=first_name, last_name=last_name, email=email, company=company,
+                                          phone=phone, account_holder=user)
+            return redirect("add_contact")
+    else:
+        form = AccountContactForm()
+
+    return render(request, "add_contact.html", {
+        'form': form, 'contacts': contacts
+    })
+
 
 def register(request):
     args = {}

@@ -1,4 +1,5 @@
 {% extends "base_template.html" %}
+{% load bootstrap %}
 {% load staticfiles %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static "css/simple-sidebar.css" %}">
@@ -37,65 +38,17 @@
 
 
     <div class="container">
-        <div class="row" id="subscriptions">
+    <div class="row" id="update">
         <div class="col-md-1 col-sm-1"></div>
  <div class="col-md-9 col-xs-9">
- <h3>Ihr aktuelles Paket</h3>
-     {% if active_subscription != None %}
- <table class="table" >
-                <thead>
-                <tr>
-                <th>Art</th>
-                    <th>Start</th>
-                    <th>Ende</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
+ <form method="post" action=".">
+        {% csrf_token %}
+        {{ form|bootstrap }}
 
-                <tr>
-                    <td>{{ active_subscription.plan }}</td>
-                    <td>{{ active_subscription.start }}</td>
-                    <td>{{ active_subscription.end }}</td>
-                    <td>{{ active_subscription.status }}</td>
-                </tr>
-             </table>
- {% else %}
- <p>Derzeit sind leider kein Paket aktiv. <a href="{% url 'preise' %}"> Buchen Sie jetzt mit wenigen klicken Ihr passendes Paket!</a></p>
- {% endif %}
 
-  <h3>Ihre abgelaufenen Pakete</h3>
-     {% if inactive_subscriptions != None %}
- <table class="table" >
-                <thead>
-                <tr>
-                <th>Art</th>
-                    <th>Start</th>
-                    <th>Ende</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                {% for subscription in inactive_subscriptions %}
-
-                <tr>
-                    <td>{{ subscription.plan }}</td>
-                    <td>{{ subscription.start }}</td>
-                    <td>{{ subscription.end }}</td>
-                    <td>{{ subscription.status }}</td>
-                </tr>
-                {% endfor %}
-             </table>
- {% else %}
- <p>Sie haben noch keine abgelaufene Pakete. <a href="{% url 'preise' %}"> Buchen Sie jetzt mit wenigen klicken Ihr passendes Paket!</a></p>
- {% endif %}
-
-        </div>
-        </div>
-
-    <div class="row" id="profile">
-        <div class="col-md-1 col-sm-1"></div>
- <div class="col-md-9 col-xs-9">
-
-        </div>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
         </div>
     </div>
 

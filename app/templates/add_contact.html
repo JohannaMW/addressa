@@ -1,4 +1,5 @@
 {% extends "base_template.html" %}
+{% load bootstrap %}
 {% load staticfiles %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static "css/simple-sidebar.css" %}">
@@ -34,68 +35,42 @@
     </div>
   </div>
 </nav>
-
-
-    <div class="container">
-        <div class="row" id="subscriptions">
+  <div class="container">
+        <div class="row" id="subscriptions" style="margin-top: 30px;">
         <div class="col-md-1 col-sm-1"></div>
  <div class="col-md-9 col-xs-9">
- <h3>Ihr aktuelles Paket</h3>
-     {% if active_subscription != None %}
+ <h3>Ihre Account Kontakte</h3>
+     {% if contacts != None %}
  <table class="table" >
                 <thead>
                 <tr>
-                <th>Art</th>
-                    <th>Start</th>
-                    <th>Ende</th>
-                    <th>Status</th>
+                <th>Name</th>
+                    <th>Nachnahme</th>
+                    <th>E-mail</th>
+                    <th>Telefon</th>
+                    <th>Unternehmen</th>
                 </tr>
                 </thead>
-
+                {% for contact in contacts %}
                 <tr>
-                    <td>{{ active_subscription.plan }}</td>
-                    <td>{{ active_subscription.start }}</td>
-                    <td>{{ active_subscription.end }}</td>
-                    <td>{{ active_subscription.status }}</td>
+                    <td>{{ contact.first_name }}</td>
+                    <td>{{ contact.last_name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.phone }}</td>
+                    <td>{{ contact.company }}</td>
                 </tr>
+  {% endfor %}
              </table>
- {% else %}
- <p>Derzeit sind leider kein Paket aktiv. <a href="{% url 'preise' %}"> Buchen Sie jetzt mit wenigen klicken Ihr passendes Paket!</a></p>
- {% endif %}
+     {% endif %}
+<h3>F&uuml;gen Sie einen Kontakt hinzu</h3>
+ <form method="post" action=".">
+        {% csrf_token %}
+        {{ form|bootstrap }}
 
-  <h3>Ihre abgelaufenen Pakete</h3>
-     {% if inactive_subscriptions != None %}
- <table class="table" >
-                <thead>
-                <tr>
-                <th>Art</th>
-                    <th>Start</th>
-                    <th>Ende</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                {% for subscription in inactive_subscriptions %}
 
-                <tr>
-                    <td>{{ subscription.plan }}</td>
-                    <td>{{ subscription.start }}</td>
-                    <td>{{ subscription.end }}</td>
-                    <td>{{ subscription.status }}</td>
-                </tr>
-                {% endfor %}
-             </table>
- {% else %}
- <p>Sie haben noch keine abgelaufene Pakete. <a href="{% url 'preise' %}"> Buchen Sie jetzt mit wenigen klicken Ihr passendes Paket!</a></p>
- {% endif %}
-
-        </div>
-        </div>
-
-    <div class="row" id="profile">
-        <div class="col-md-1 col-sm-1"></div>
- <div class="col-md-9 col-xs-9">
-
-        </div>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
         </div>
     </div>
 

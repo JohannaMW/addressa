@@ -22,6 +22,9 @@ class Client(AbstractUser):
     activation_key = models.CharField(max_length=40, blank=True)
     key_expires = models.DateTimeField(default=datetime.date.today())
 
+    class Meta:
+        db_table = 'auth_user'
+
     def __unicode__(self):
         return u"{}".format(self.username)
 
